@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+        <div class="heading">
+            <i class="fa-solid fa-graduation-cap"></i><span>Student Management System</span>
+        </div>
+        <div class="welcome">
+            welcome!
+        </div>
+    </header>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-item">
+                <a href="dashboard.html"><i class="fa-solid fa-house"></i>Dashboard</a>
+            </div>
+             <div class="nav-item">
+                <a href="add.html"><i class="fa-solid fa-user-plus"></i>Add Students</a>
+            </div>
+             <div class="nav-item">
+                <a href="view.html"><i class="fa-solid fa-user"></i> View Students</a>
+            </div>
+             <div class="nav-item">
+                <a href="search.html"><i class="fa-solid fa-magnifying-glass"></i> Search Student</a>
+            </div>
+             <div class="nav-item">
+                <a href="logout.html"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+            </div>
+        
+        </div>
+        <div class="dash-content">
+            <div class="dashboard">
+        <h1>Dashboard</h1>
+        <p>Welcome to Student Management System</p>
+        <div class="dashboard-info">
+            <div class="sub-dashboard  student-info">
+                <div class=" icon  div1">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+            <h2>Total Students</h2>
+            <h1 id="totalstudents">0</h1>
+        </div>
+        <div class="sub-dashboard student-info">
+            <div class=" icon div2">
+                <i class="fa-solid fa-book"></i>
+            </div>
+            <h2>Courses</h2>
+            <h1 id="totalcourses">0</h1>
+        </div>
+        <div class="sub-dashboard student-info">
+            <div class=" icon  div3">
+                <i class="fa-solid fa-building"></i>
+            </div>
+            <h2>Departments</h2>
+            <h1 id="totaldepartments">0</h1>
+        </div>
+        <div class="sub-dashboard student-info">
+            <div class=" icon div4 ">
+                <i class="fa-solid fa-building"></i>
+            </div>
+            <h2>Total Users</h2>
+            <h1 id="totalusers">0</h1>
+        </div>
+        </div>
+            </div>
+        <div class="dashboard-menu">
+        <h1>Quick Actions </h1>
+
+        <div class="dash-nav">
+            <div class="sub-dashboard  student-info dash">
+               <a href="add.html">
+                    <i class="fa-solid fa-user-plus"></i>
+                </a>
+            <h2>Add Students</h2>
+         </div>  
+         <div class="sub-dashboard  student-info dash">
+            <a href="view.html">
+                    <i class="fa-solid fa-list"></i>
+             </a>  
+            <h2>View Students</h2>
+         </div>  
+         <div class="sub-dashboard  student-info dash">
+                <a href="search.html">
+                   <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            <h2>Search Students</h2>
+         </div>  
+         <div class="sub-dashboard  student-info dash">
+               <a href="logout.html">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+               </a>
+            <h2>Logout</h2>
+         </div>
+        </div>  
+        </div>
+
+        </div>
+        
+    </div>
+    </div>
+    
+    <script>
+    // Get student data
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+
+    // Total Students
+    document.getElementById("totalstudents").innerText = students.length;
+
+    // Unique Courses Count
+    let courses = [...new Set(students.map(student => student.course))];
+    document.getElementById("totalcourses").innerText = courses.length;
+
+    // Unique Departments Count
+    let departments = [...new Set(students.map(student => student.department))];
+    document.getElementById("totaldepartments").innerText = departments.length;
+
+    // Total Users Count
+    let users = JSON.parse(localStorage.getItem("user"));
+
+    if(users){
+        document.getElementById("totalusers").innerText = 1;
+    } else {
+        document.getElementById("totalusers").innerText = 0;
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#e6f7ff;
+            font-family:Arial;
+        }
+
+        .logout-box{
+            background:white;
+            padding:40px;
+            width:400px;
+            text-align:center;
+            border-radius:10px;
+            box-shadow:0px 0px 10px gray;
+        }
+
+        .logout-box i{
+            font-size:60px;
+            color:red;
+            margin-bottom:20px;
+        }
+
+        .logout-box h1{
+            color:#000066;
+        }
+
+        .logout-box p{
+            font-size:18px;
+        }
+
+        .logout-box button{
+            background:#000099;
+            color:white;
+            border:none;
+            padding:12px 20px;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="logout-box">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    
+    <h1>Logout Successful</h1>
+
+    <p>You have been logged out successfully.</p>
+
+    <button onclick="goLogin()">Login Again</button>
+</div>
+
+<script>
+function goLogin(){
+    window.location.href="login.html";
+}
+
+// Auto redirect after 3 seconds
+setTimeout(()=>{
+    window.location.href="login.html";
+},3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+     <header>
+        <div class="heading">
+            <i class="fa-solid fa-graduation-cap"></i><span>Student Management System</span>
+        </div>
+        <div class="welcome">
+            welcome!
+        </div>
+    </header>
+    <div class="main">
+        <div class="navbar">
+            <div class="nav-item">
+                <a href="dashboard.html"><i class="fa-solid fa-house"></i>Dashboard</a>
+            </div>
+             <div class="nav-item">
+                <a href="add.html"><i class="fa-solid fa-user-plus"></i>Add Students</a>
+            </div>
+             <div class="nav-item">
+                <a href="view.html"><i class="fa-solid fa-user"></i> View Students</a>
+            </div>
+             <div class="nav-item">
+                <a href="search.html"><i class="fa-solid fa-magnifying-glass"></i> Search Student</a>
+            </div>
+             <div class="nav-item">
+                <a href="logout.html"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+            </div>
+        
+        </div>
+        <div class="seachinfo">
+            <h1>Search Student</h1>
+
+    <div class="search">
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Enter Name or Roll Number"
+        >
+        
+        <button  onclick="searchStudent()">Search</button>
+    </div>
+
+    <br><br>
+
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Department</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+
+        <tbody id="resultTable"></tbody>
+    </table>
+        </div>
+    </div>
+    
+    
+
+<script>
+function searchStudent() {
+    let keyword = document.getElementById("searchInput").value.toLowerCase();
+
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+
+    let resultTable = document.getElementById("resultTable");
+
+    resultTable.innerHTML = "";
+
+    let filteredStudents = students.filter(student =>
+        student.name.toLowerCase().includes(keyword) ||
+        student.roll.includes(keyword)
+    );
+
+    if(filteredStudents.length === 0){
+        resultTable.innerHTML = `
+            <tr>
+                <td colspan="8">No Student Found</td>
+            </tr>
+        `;
+        return;
+    }
+
+    filteredStudents.forEach((student,index)=>{
+        resultTable.innerHTML += `
+            <tr>
+                <td>${index+1}</td>
+                <td>${student.roll}</td>
+                <td>${student.name}</td>
+                <td>${student.email}</td>
+                <td>${student.course}</td>
+                <td>${student.department}</td>
+                <td>${student.phone}</td>
+                <td>${student.address}</td>
+            </tr>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>

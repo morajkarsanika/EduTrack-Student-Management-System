@@ -1,0 +1,56 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem;
+     background-color:  #e6f7ff;
+}
+div{
+   width: 350px;
+    height: auto;
+    padding: 1rem;
+    text-align: center;
+    background: white;
+    box-shadow: 1px 1px 2px 3px #dddada;
+    border-radius: 10px;
+}
+.fa-solid{
+    font-size: 4rem;
+    color: #000099;
+}
+form{
+    width: 300px;
+    height: auto;
+   
+    padding: 1rem;
+    text-align: left;
+}
+label{
+    font-size: 1.2rem;
+}
+input{
+       width: 270px;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    /* border: 1px solid black; */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 2px #c9c4c4;
+}
+a{
+    text-decoration: none;
+    color: blue;
+    font-weight: 700;
+}
+button{
+    font-size: 1rem;
+    /* padding: 1rem 2rem; */
+    width: 300px;
+    padding: 0.5rem;
+    background: #000099;
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+}

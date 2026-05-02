@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="registration.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+
+</head>
+<body>
+    <div>
+        <i class="fa-solid fa-user-plus"></i>
+<h1>Create Account</h1>
+<h4>Register to get started with Student Management System </h4>
+
+<form id="registerForm">
+    <label>Username:</label>
+    <input type="text" id="username" required><br><br>
+
+    <label>Email:</label>
+    <input type="email" id="email" required><br><br>
+
+    <label>Password:</label>
+    <input type="password" id="password" required><br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<p>Already registered? <a href="index.html">Login Here</a></p>
+    </div>
+
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let user = {
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Registration Successful!");
+
+    window.location.href = "index.html";
+});
+</script>
+
+</body>
+</html>

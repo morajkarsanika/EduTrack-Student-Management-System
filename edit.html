@@ -1,0 +1,158 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header>
+    <div class="heading">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>Student Management System</span>
+    </div>
+
+    <div class="welcome">
+        Welcome!
+    </div>
+</header>
+
+<div class="main">
+
+    <!-- Sidebar -->
+    <div class="navbar">
+
+        <div class="nav-item">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>Dashboard
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="add.html">
+                <i class="fa-solid fa-user-plus"></i>Add Students
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="view.html">
+                <i class="fa-solid fa-user"></i>View Students
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="search.html">
+                <i class="fa-solid fa-magnifying-glass"></i>Search Student
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="logout.html">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Edit Form -->
+    <div class="dashboard">
+        <div class="sub-dashboard">
+
+            <h1>Update Student</h1>
+
+            <form onsubmit="updateStudent(event)">
+
+                <div class="grid">
+
+                    <label>Full Name<br>
+                        <input type="text" id="name" required>
+                    </label>
+
+                    <label>Roll Number<br>
+                        <input type="number" id="roll" required>
+                    </label>
+
+                    <label>Email<br>
+                        <input type="email" id="email" required>
+                    </label>
+
+                    <label>Course<br>
+                        <input type="text" id="course" required>
+                    </label>
+
+                    <label>Department<br>
+                        <input type="text" id="department" required>
+                    </label>
+
+                    <label>Phone Number<br>
+                        <input type="text" id="phone" required>
+                    </label>
+
+                </div>
+
+                <label>Address<br>
+                    <textarea id="address" rows="4" required></textarea>
+                </label>
+
+                <div class="submitbtn">
+                    <button type="button"
+                    onclick="window.location.href='view.html'">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="btn">
+                        Update Student
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    let index = localStorage.getItem("editIndex");
+
+    // Auto-fill existing student data
+    document.getElementById("name").value = students[index].name;
+    document.getElementById("roll").value = students[index].roll;
+    document.getElementById("email").value = students[index].email;
+    document.getElementById("course").value = students[index].course;
+    document.getElementById("department").value = students[index].department;
+    document.getElementById("phone").value = students[index].phone;
+    document.getElementById("address").value = students[index].address;
+
+    // Update student
+    function updateStudent(event){
+        event.preventDefault();
+
+        students[index] = {
+            name: document.getElementById("name").value,
+            roll: document.getElementById("roll").value,
+            email: document.getElementById("email").value,
+            course: document.getElementById("course").value,
+            department: document.getElementById("department").value,
+            phone: document.getElementById("phone").value,
+            address: document.getElementById("address").value
+        };
+
+        localStorage.setItem("students", JSON.stringify(students));
+
+        alert("Student updated successfully!");
+
+        window.location.href = "view.html";
+    }
+</script>
+
+</body>
+</html>
