@@ -42,4 +42,4 @@ This project was built as a part of my frontend learning journey to practice:
 - Improve dashboard analytics (charts, graphs)
 ---
 
-## ⭐ Live Site [sanikastudentsystem.netlify.app]
+## ⭐ Live Site [https://morajkarsanika.github.io/EduTrack-Student-Management-System/]
